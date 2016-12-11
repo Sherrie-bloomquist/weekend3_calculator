@@ -4,10 +4,10 @@
 [x] set up route for the index.html on base url
 [x] create 2 input boxes, 1 drop down box, 1 enter button, 1 clear button   
 [] set up post and get routes that fire on button click  
-[] client side is taking in the 2 numerical values and mathematical operation and bundling in an object to send to the server { x: 3, y: 4, type: "Add" }  
+[x] client side is taking in the 2 numerical values and mathematical operation and bundling in an object to send to the server { x: 3, y: 4, type: "Add" }  
 [] server side is performing the logic   
 [] send answer back down to client side to display on the DOM  
-[] clear button resets the experience  
+[x] clear button resets the experience  
 
 
 Weekend Challenge 3: Your Own Calculator

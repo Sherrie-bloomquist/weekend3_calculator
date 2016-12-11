@@ -4,7 +4,7 @@ var path = require( 'path' );
 var bodyParser = require( 'body-parser' );
 var urlEncodedParser = bodyParser.urlencoded( { extended: false } );
 var port = process.env.PORT || 8080;
-var equation = [];
+var answer = [];
 
 app.listen( port, function(){
   console.log( 'server listening on', port );
@@ -16,18 +16,35 @@ app.get( '/', function( req, res ){
   res.sendFile( path.resolve( 'client/index.html' ) );
 }); // end base url
 
-// // testPost
-// app.post( '/testPost', urlEncodedParser, function( req, res ){
-//   console.log( 'testPost url hit. req.body:', req.body );
-//   // do work here
-//   serverArray.push(req.body);
-//   console.log(serverArray);
-//
-//   res.send( serverArray );
-// }); // end testPost
+app.get('/calculateGet', function(req, res){
+  console.log('calculateGet url hit');
+});//end calculateGet
+
+// calculatePost
+app.post( '/calculatePost', urlEncodedParser, function( req, res ){
+  console.log( 'calculatePost url hit. req.body:', req.body );
+
+  // console.log(equation);
+  var result = '';
+  var x = Number(req.body.x);
+  var y = Number(req.body.y);
+  var type = req.body.type;
+  console.log(' var y:', y);
+
+  var mathTime = function(){
+    if( type === '+'){
+       result = x + y;
+       console.log('result:', result);
+    }
+    answer.push(result);
+  }; //end mathTime
+
+res.send( answer );
+
+}); // end calculatePost
 
 
 
 
 // static folder
-app.use( express.static( 'public' ) );
+app.use( express.static( 'client' ) );

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <script src="jquery-3.1.1.min.js" charset="utf-8"></script>
     <script src="script.js"></script>
-    <link rel="stylesheet" href='text/css'>
+    <link rel="stylesheet" href='style.css'>
     <title>weekend3_calculator</title>
   </head>
   <body>
@@ -14,16 +14,17 @@
   <div id='mainContent'>
       <input type="text" id="num1" placeholder="first number">
     <select id="operation">
-      <option value="addition">addition</option>
-      <option value="subtraction">subtraction</option>
-      <option value="multiplication">multiplication</option>
-      <option value="subtraction">subtraction</option>
+      <option value="addition">+</option>
+      <option value="subtraction">-</option>
+      <option value="multiplication">*</option>
+      <option value="division">/</option>
     </select>
       <input type="text" id="num2" placeholder="second number">
       <button type="button" id="getValue">Equals</button>
+      <div id='answer'></div>
   </div>
-  <div id='answer'></div>
-  <div id='clearButton'>
+
+  <div id='resetButtonDiv'>
     <button type="button" id="clearButton">Clear</button>
   </div>
   </body>

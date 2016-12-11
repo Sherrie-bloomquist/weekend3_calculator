@@ -44,8 +44,19 @@
 #clearButton{
   height: 35px;
   font-size: 14pt;
-  text-align: center;
   border-width: thick;
   border-color: #42dcf4;
   margin-top: 50px;
+}
+
+#resetButtonDiv{
+  text-align: center;
+  margin-top: -15px;
+}
+
+#answer{
+  text-align: center;
+  font: fantasy;
+  font-size: 20px;
+
 }
