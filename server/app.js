@@ -37,7 +37,27 @@ app.post( '/calculatePost', urlEncodedParser, function( req, res ){
        };
        res.send(resultAdd);
     }
-// answer.push(result);
+    else if( type === '-'){
+       result = x - y;
+       var resultSubtract = {
+         answer: result,
+       };
+       res.send(resultSubtract);
+    }
+    else if( type === '*'){
+       result = x * y;
+       var resultMultiply = {
+         answer: result,
+       };
+       res.send(resultMultiply);
+    }
+    else if( type === '/'){
+       result = x / y;
+       var resultDivide = {
+         answer: result,
+       };
+       res.send(resultDivide);
+    }
   }; //end mathTime
 
   mathTime();
@@ -45,10 +65,7 @@ app.post( '/calculatePost', urlEncodedParser, function( req, res ){
 }); // end calculatePost
 
 
-app.get('/calculateGet', function(req, res){
-  console.log('calculateGet url hit');
-  res.send( answer );
-});//end calculateGet
+
 
 
 

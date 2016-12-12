@@ -3,6 +3,7 @@ var outputText = '';
 
 $(document).ready(function(){
   console.log('jq');
+  $('#clearButton').hide();
 
 //POST
 var postEquation = function(){
@@ -24,32 +25,20 @@ var postEquation = function(){
     data: objectToSend,
     success: function(response){
       console.log('back from calculatePost:', response);
-      outputText += '<p>' + 'The answer is: ' + '<u>' + response.answer + '</u></p>';
+      outputText += '<p>' + response.answer + '</p>';
       $('#answer').append(outputText);
     }, //end success
   });//end postEquation ajax call
-  // getAnswer();
 }; //end postEquation function
 
-
-//GET
-// var getAnswer = function(){
-// console.log('in getAnswer');
-//   $.ajax({
-//     type: 'GET',
-//     url: '/calculateGet',
-//     success: function(response){
-//       console.log('back from get call:', response);
-//
-//
-//     }//end success
-//
-//   });//end ajax call
-// }; //end getAnswer
 
 //button functions
 $('#getValue').on('click', function(){
   postEquation();
+  $('#mainContent').hide();
+  $('#img').hide();
+  $('#clearButton').show();
+
 }); //end getValue onclick
 
 $('#clearButton').on('click',function(){
