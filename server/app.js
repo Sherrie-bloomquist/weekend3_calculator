@@ -18,6 +18,7 @@ app.get( '/', function( req, res ){
 
 app.get('/calculateGet', function(req, res){
   console.log('calculateGet url hit');
+  res.send( answer );
 });//end calculateGet
 
 // calculatePost
@@ -35,11 +36,12 @@ app.post( '/calculatePost', urlEncodedParser, function( req, res ){
     if( type === '+'){
        result = x + y;
        console.log('result:', result);
+       answer.push(result);
     }
-    answer.push(result);
+
   }; //end mathTime
 
-res.send( answer );
+
 
 }); // end calculatePost
 
