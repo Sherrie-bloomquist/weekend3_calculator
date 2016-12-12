@@ -24,29 +24,28 @@ var postEquation = function(){
     data: objectToSend,
     success: function(response){
       console.log('back from calculatePost:', response);
-
+      outputText += '<p>' + 'The answer is: ' + '<u>' + response.answer + '</u></p>';
+      $('#answer').append(outputText);
     }, //end success
   });//end postEquation ajax call
-  getAnswer();
+  // getAnswer();
 }; //end postEquation function
 
 
 //GET
-var getAnswer = function(){
-console.log('in getAnswer');
-  $.ajax({
-    type: 'GET',
-    url: '/calculateGet',
-    success: function(response){
-      console.log('back from get call:', response);
-      for (var i = 0; i < response.length; i++) {
-        outputText += '<p><u>' + response[0] + '</u></p>';
-        $('#answer').append(outputText);
-      }//end forloop
-    }//end success
-
-  });//end ajax call
-}; //end getAnswer
+// var getAnswer = function(){
+// console.log('in getAnswer');
+//   $.ajax({
+//     type: 'GET',
+//     url: '/calculateGet',
+//     success: function(response){
+//       console.log('back from get call:', response);
+//
+//
+//     }//end success
+//
+//   });//end ajax call
+// }; //end getAnswer
 
 //button functions
 $('#getValue').on('click', function(){
@@ -55,7 +54,6 @@ $('#getValue').on('click', function(){
 
 $('#clearButton').on('click',function(){
   window.location.reload();
-  objectToSend = {};
   $('#answer').append( '' );
 });//end clearButton onclick
 

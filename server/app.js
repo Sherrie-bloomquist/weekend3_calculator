@@ -5,6 +5,7 @@ var bodyParser = require( 'body-parser' );
 var urlEncodedParser = bodyParser.urlencoded( { extended: false } );
 var port = process.env.PORT || 8080;
 var answer = [];
+var fromClient = [];
 
 app.listen( port, function(){
   console.log( 'server listening on', port );
@@ -16,34 +17,38 @@ app.get( '/', function( req, res ){
   res.sendFile( path.resolve( 'client/index.html' ) );
 }); // end base url
 
-app.get('/calculateGet', function(req, res){
-  console.log('calculateGet url hit');
-  res.send( answer );
-});//end calculateGet
 
 // calculatePost
 app.post( '/calculatePost', urlEncodedParser, function( req, res ){
   console.log( 'calculatePost url hit. req.body:', req.body );
-
-  // console.log(equation);
-  var result = '';
+  // var result = '';
   var x = Number(req.body.x);
   var y = Number(req.body.y);
   var type = req.body.type;
+  fromClient.push(req.body);
+
   console.log(' var y:', y);
 
   var mathTime = function(){
     if( type === '+'){
        result = x + y;
-       console.log('result:', result);
-       answer.push(result);
+       var resultAdd = {
+         answer: result,
+       };
+       res.send(resultAdd);
     }
-
+// answer.push(result);
   }; //end mathTime
 
-
+  mathTime();
 
 }); // end calculatePost
+
+
+app.get('/calculateGet', function(req, res){
+  console.log('calculateGet url hit');
+  res.send( answer );
+});//end calculateGet
 
 
 
